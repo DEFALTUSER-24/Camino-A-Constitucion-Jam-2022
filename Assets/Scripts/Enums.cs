@@ -11,3 +11,9 @@ public enum PassengerState
     IDontWantToBuy,
     IWantToBuy,
 }
+
+public enum CandyType
+{
+    Alfajor,
+    Mantekel,
+}
