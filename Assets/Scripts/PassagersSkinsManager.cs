@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PassagersSkinsManager : MonoBehaviour
+public class PassagersSkinsManager : Passenger
 {
     public static PassagersSkinsManager instance;
     [SerializeField] public List<Sprite> _allSkins = new List<Sprite>();
