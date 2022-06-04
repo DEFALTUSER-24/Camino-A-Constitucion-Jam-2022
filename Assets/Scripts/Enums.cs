@@ -16,4 +16,5 @@ public enum CandyType
 {
     Alfajor,
     Mantekel,
+    Nothing,
 }

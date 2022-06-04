@@ -3,7 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(TrailRenderer))]
 public class Candy : MonoBehaviour
 {
-    private     Passenger         _target;
+    [SerializeField] private        Passenger           _target;
+    [SerializeField] private        CandyType           _myType;
 
     private void Update()
     {
@@ -14,6 +15,7 @@ public class Candy : MonoBehaviour
 
         if(distance.magnitude < FlyWeightPointer.passenger.viewRadius)
         {
+            _target.ReciveACandy(_myType);
             Destroy(this.gameObject);
         }
     }
