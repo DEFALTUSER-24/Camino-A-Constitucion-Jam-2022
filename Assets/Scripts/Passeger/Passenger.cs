@@ -12,8 +12,11 @@ public class Passenger : MonoBehaviour
     [SerializeField] private GameObject _balloon;
     [SerializeField] private GameObject _mantekelImage;
     [SerializeField] private GameObject _alfajorImage;
+    [SerializeField] private int _candyMaxAmount;
 
     private Animator _balloonAnimator;
+    public int MaxCandyAmount { get { return _candyMaxAmount; } private set { _candyMaxAmount = value; } }
+    private int _candyAmountOnBag;
 
     private void Start()
     {
@@ -28,7 +31,7 @@ public class Passenger : MonoBehaviour
 
     private void Update()
     {
-        if (GameMode.Instance.GameTimer.IsZero() || GameMode.Instance.GamePaused)
+        if (GameMode.Instance.IsGameInactive())
             return;
 
         _fsm.CurrentState().OnUpdate();
@@ -37,12 +40,15 @@ public class Passenger : MonoBehaviour
     #region MouseMethods
     private void OnMouseEnter()
     {
+        if (GameMode.Instance.IsGameInactive())
+            return;
+
         CanvasManager.Instance.SetCursorHoveringState(true);
     }
 
     private void OnMouseOver()
     {
-        if (GameMode.Instance.GameTimer.IsZero() || GameMode.Instance.GamePaused)
+        if (GameMode.Instance.IsGameInactive())
             return;
 
         if (Input.GetMouseButtonDown(0))
@@ -72,14 +78,31 @@ public class Passenger : MonoBehaviour
 
     public void ReciveACandy(CandyType type)
     {
-        if(_iLikeThisCandy == type)
+        /*
+         * Los valores de las golosinas estan hardcodeados, hay que ponerles un valor después (estaría bueno determinarlo por dificultad o por inflación?).
+         * Lo mismo con el tiempo que resta/suma.
+         */
+
+        if (MyCandy() != type || CandyOnBag() >= MaxCandyAmount)
+        {
+            Debug.Log(CandyOnBag() > MaxCandyAmount ? "Ya tengo suficientes!!" : "No quería esto!!");
+
+            GameMode.Instance.Stats.MadClient_Add();
+            GameMode.Instance.Stats.Money_Remove(10);
+            GameMode.Instance.GameTimer.ModifyTime(-15);
+        }
+        else if(MyCandy() == type)
         {
             Debug.Log("Gracias!");
+
+            GameMode.Instance.Stats.HappyClient_Add();
+            GameMode.Instance.Stats.Money_Add( MyCandy() == CandyType.Alfajor ? 20 : 40 );
+            GameMode.Instance.GameTimer.ModifyTime(15);
         }
-        else if (_iLikeThisCandy != type)
-        {
-            Debug.Log("No queria esto!");
-        }
+
+        //Cantidad de golosinas dadas siempre tiene que sumar un valor, lo haya pedido o no.
+        _candyAmountOnBag++;
+        GameMode.Instance.Stats.Candy_Add();
 
         if (MyCandy() != CandyType.Nothing)
         {
@@ -94,6 +117,16 @@ public class Passenger : MonoBehaviour
     public CandyType MyCandy()
     {
         return _iLikeThisCandy;
+    }
+
+    public int CandyOnBag()
+    {
+        return _candyAmountOnBag;
+    }
+
+    public void ResetCandyOnBag()
+    {
+        _candyAmountOnBag = 0;
     }
 
     private void OnDrawGizmos()

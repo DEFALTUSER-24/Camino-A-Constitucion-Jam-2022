@@ -19,7 +19,7 @@ public class IBuyState : IState
     {
         float value = Random.value * 100;
 
-        if (!_alreadyRequest)
+        if (!_alreadyRequest && _agent.CandyOnBag() < _agent.MaxCandyAmount)
         {
             if (value < 50) _agent.RequestACandy(CandyType.Alfajor);
             else _agent.RequestACandy(CandyType.Mantekel);

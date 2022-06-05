@@ -20,9 +20,9 @@ public class GameStats
 
     public int CandyDelivered { get; private set; }
 
-    public int Candy_Add(int amount)
+    public int Candy_Add()
     {
-        CandyDelivered += amount;
+        CandyDelivered++;
         return CandyDelivered;
     }
 

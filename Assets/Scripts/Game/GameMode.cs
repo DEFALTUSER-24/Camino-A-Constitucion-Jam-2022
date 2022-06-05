@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class GameMode : MonoBehaviour
 {
-    [HideInInspector]       public      static      GameMode        Instance;
-    [SerializeField]        public                  Timer           GameTimer { get; private set; }
+    [HideInInspector]                   public      static      GameMode        Instance;
+    [SerializeField]                    public                  Timer           GameTimer { get; private set; }
 
-    [SerializeField]        private                 int             _levelMinutes;
-    [SerializeField]        private                 int             _levelSeconds;
-    [SerializeField]        private                 int             _scoreMultiplier;
-                            private                 Coroutine       _timeCoroutine;
-                            public                  bool            GamePaused { get; private set; }
-                            public                  GameStats       Stats { get; private set; }
+    [SerializeField] [Range(0, 10)]     private                 int             _levelMinutes;
+    [SerializeField] [Range(0, 60)]     private                 int             _levelSeconds;
+    [SerializeField]                    private                 int             _scoreMultiplier;
+                                        private                 Coroutine       _timeCoroutine;
+                                        public                  bool            GamePaused { get; private set; }
+                                        public                  bool            ResettingPassengers { get; private set; }
+                                        public                  GameStats       Stats { get; private set; }
+
+    //-----------------------------------------------------------------------------
 
     private void Awake()
     {
@@ -34,7 +37,17 @@ public class GameMode : MonoBehaviour
         if (GameTimer.IsZero()) //Evitamos que reinicie en caso que el tiempo ya haya terminado, asi solo mostramos la pantalla de fin del juego.
             return;
 
-        Debug.Log("Passengers resetted");
+        ResettingPassengers = true;
+        FindObjectOfType<PlayerModifiers>().MoveToInitialPosition();
+
+        Passenger[] passengers = FindObjectsOfType<Passenger>();
+        
+        foreach (Passenger p in passengers)
+        {
+            p.ResetCandyOnBag();
+        }
+
+        ResettingPassengers = false;
     }
 
     public void GameOver()
@@ -43,6 +56,13 @@ public class GameMode : MonoBehaviour
         Stats.Score_Remove(Stats.MadClients * _scoreMultiplier);
 
         CanvasManager.Instance.ShowGameOverScreen();
+    }
+
+    //-----------------------------------------------------------------------------
+
+    public bool IsGameInactive()
+    {
+        return GameTimer.IsZero() || GamePaused || ResettingPassengers;
     }
 
     //-----------------------------------------------------------------------------

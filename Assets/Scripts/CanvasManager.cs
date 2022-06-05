@@ -116,6 +116,13 @@ public class CanvasManager : MonoBehaviour
         int money = GameMode.Instance.Stats.MoneyEarned;
         int iva = Mathf.CeilToInt(money * 0.21f);
         int final = money - iva;
+        
+        if (money <= 0)
+        {
+            money = 0;
+            iva = 0;
+            final = 0;
+        }
 
         Debug.Log("game over");
         _hudPanel.SetActive(false);
