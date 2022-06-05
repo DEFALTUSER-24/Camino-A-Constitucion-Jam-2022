@@ -25,6 +25,7 @@ public abstract class ThrowingObject : MonoBehaviour
 
     protected virtual void Collision()
     {
+        _player.GotHit();
         _player = null;
         Destroy(this.gameObject);
     }
