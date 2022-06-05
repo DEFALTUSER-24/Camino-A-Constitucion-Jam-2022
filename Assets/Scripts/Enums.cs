@@ -18,3 +18,9 @@ public enum CandyType
     Mantekel,
     Nothing,
 }
+
+public enum PassengerObjects
+{
+    Rocks,
+    Money,
+}

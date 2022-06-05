@@ -10,8 +10,6 @@ public class PassagersSkinsManager : Passenger
     {
         if (instance == null) instance = this;
         else Destroy(this);
-
-        //
     }
 
     public Sprite GetMyASkin()

@@ -1,6 +1,6 @@
 public static class FlyWeightPointer
 {
-    public static readonly CandyFlyweight candy = new CandyFlyweight()
+    public static readonly ThrowingObjectFlyWeight TObject = new ThrowingObjectFlyWeight()
     {
         speed = 7.5f,
     };

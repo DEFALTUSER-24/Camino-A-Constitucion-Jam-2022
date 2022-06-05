@@ -12,7 +12,6 @@ public class SeeState : IState
 
     public void OnEnter()
     {
-        Debug.Log("Veo");
     }
 
     public void OnUpdate()

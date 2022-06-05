@@ -12,7 +12,6 @@ public class IDontBuyState : IState
 
     public void OnEnter()
     {
-        Debug.Log("No voy a comprar");
     }
 
     public void OnUpdate()

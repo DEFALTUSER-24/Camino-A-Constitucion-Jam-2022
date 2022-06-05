@@ -10,12 +10,11 @@ public class Candy : MonoBehaviour
     {
         Vector3 distance = _target.transform.position - transform.position;
 
-        if (_target != null) 
-            transform.position += distance.normalized * FlyWeightPointer.candy.speed * Time.deltaTime;
+        if (_target != null) transform.position += distance.normalized * FlyWeightPointer.TObject.speed * Time.deltaTime;
 
         if(distance.magnitude < FlyWeightPointer.passenger.viewRadius)
         {
-            _target.ReciveACandy(_myType);
+            
             Destroy(this.gameObject);
         }
     }

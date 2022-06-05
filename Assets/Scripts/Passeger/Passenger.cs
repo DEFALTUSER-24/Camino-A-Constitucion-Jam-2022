@@ -12,6 +12,7 @@ public class Passenger : MonoBehaviour
     [SerializeField] private GameObject _balloon;
     [SerializeField] private GameObject _mantekelImage;
     [SerializeField] private GameObject _alfajorImage;
+    [SerializeField] private Thrower    _throw;
 
     private Animator _balloonAnimator;
 
@@ -74,11 +75,11 @@ public class Passenger : MonoBehaviour
     {
         if(_iLikeThisCandy == type)
         {
-            Debug.Log("Gracias!");
+            _throw.Throw(PlayerHit.instance, PassengerObjects.Money);
         }
         else if (_iLikeThisCandy != type)
         {
-            Debug.Log("No queria esto!");
+            _throw.Throw(PlayerHit.instance, PassengerObjects.Rocks);
         }
 
         if (MyCandy() != CandyType.Nothing)

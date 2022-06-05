@@ -12,7 +12,6 @@ public class IBuyState : IState
 
     public void OnEnter()
     {
-        Debug.Log("Voy a comprar");
     }
 
     public void OnUpdate()
