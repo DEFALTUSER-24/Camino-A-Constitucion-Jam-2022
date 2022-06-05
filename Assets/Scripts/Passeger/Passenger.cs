@@ -9,11 +9,14 @@ public class Passenger : MonoBehaviour
 
     [SerializeField] private CandyType _iLikeThisCandy = CandyType.Nothing;
 
-    [SerializeField] private GameObject _balloon;
     [SerializeField] private GameObject _mantekelImage;
     [SerializeField] private GameObject _alfajorImage;
     [SerializeField] private Thrower _throw;
     [SerializeField] private int _candyMaxAmount;
+
+    [Header("Balloon options")]
+    [SerializeField] private GameObject _balloon;
+    [SerializeField] private bool bAnimateToLeft;
 
     private Animator _balloonAnimator;
     public int MaxCandyAmount { get { return _candyMaxAmount; } private set { _candyMaxAmount = value; } }
@@ -69,7 +72,7 @@ public class Passenger : MonoBehaviour
     {
         _iLikeThisCandy = type;
 
-        _balloonAnimator.SetTrigger("grow");
+        _balloonAnimator.SetTrigger( bAnimateToLeft ? "grow-left" : "grow" );
 
         if (MyCandy() == CandyType.Mantekel)
             _mantekelImage.SetActive(true);
@@ -96,7 +99,7 @@ public class Passenger : MonoBehaviour
         {
             GameMode.Instance.Stats.HappyClient_Add();
             GameMode.Instance.Stats.Money_Add(MyCandy() == CandyType.Alfajor ? 20 : 40);
-            GameMode.Instance.GameTimer.ModifyTime(15);
+            //GameMode.Instance.GameTimer.ModifyTime(15);
             _throw.Throw(PlayerHit.instance, PassengerObjects.Money);
         }
 
