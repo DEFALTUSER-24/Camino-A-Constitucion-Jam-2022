@@ -12,6 +12,7 @@ public class PlayerModifiers : MonoBehaviour
     private Vector3 _initialPosition;
     private Vector3 _distanceToNextWagon;
     private bool _alreadyReachedPosition;
+    private Animator _anim;
 
     private void Awake()
     {
