@@ -47,12 +47,12 @@ public class CanvasManager : MonoBehaviour
 
     public void SetCursorHoveringState(bool bIsHovering)
     {
-        Cursor.SetCursor(bIsHovering ? _cursorHover : _cursorNormal, _cursorOffset, CursorMode.ForceSoftware);
+        //Cursor.SetCursor(bIsHovering ? _cursorHover : _cursorNormal, _cursorOffset, CursorMode.ForceSoftware);
     }
 
     public void SetCursorTexture(Texture2D _customTexture, Vector2 _offset)
     {
-        Cursor.SetCursor(_customTexture, _offset, CursorMode.ForceSoftware);
+        //Cursor.SetCursor(_customTexture, _offset, CursorMode.ForceSoftware);
     }
 
     public void Fade()
