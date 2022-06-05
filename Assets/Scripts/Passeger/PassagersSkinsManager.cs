@@ -10,12 +10,12 @@ public class PassagersSkinsManager : Passenger
     {
         if (instance == null) instance = this;
         else Destroy(this);
+
+        //
     }
 
     public Sprite GetMyASkin()
     {
-        int index = Random.Range(0, _allSkins.Count);
-        Sprite skin = _allSkins[index];
-        return skin;
+        return _allSkins[Random.Range(0, _allSkins.Count)];
     }
 }

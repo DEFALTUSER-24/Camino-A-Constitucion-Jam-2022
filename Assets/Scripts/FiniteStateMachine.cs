@@ -18,12 +18,11 @@ public class FiniteStateMachine<Enum>
 
     public void ChangeState(Enum name)
     {
-        if (_allStates.ContainsKey(name))
-        {
-            _currentState?.OnExit();            //el ? pregunta si es null, si no lo es, ejecuta el OnExit del anterior estado
-            _currentState = _allStates[name];   //Cambia el anterior estado por el nuevo
-            _currentState.OnEnter();            //Ejecuta el OnEnter del nuevo estado
-        }
-        else return;
+        if (!_allStates.ContainsKey(name))
+            return;
+
+        _currentState?.OnExit();            //el ? pregunta si es null, si no lo es, ejecuta el OnExit del anterior estado
+        _currentState = _allStates[name];   //Cambia el anterior estado por el nuevo
+        _currentState.OnEnter();            //Ejecuta el OnEnter del nuevo estado
     }
 }
