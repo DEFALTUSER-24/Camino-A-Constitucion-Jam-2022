@@ -28,6 +28,9 @@ public class Passenger : MonoBehaviour
 
     private void Update()
     {
+        if (GameMode.Instance.GameTimer.IsZero() || GameMode.Instance.GamePaused)
+            return;
+
         _fsm.CurrentState().OnUpdate();
     }
 
@@ -39,7 +42,7 @@ public class Passenger : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (GameMode.Instance.GameTimer.IsZero())
+        if (GameMode.Instance.GameTimer.IsZero() || GameMode.Instance.GamePaused)
             return;
 
         if (Input.GetMouseButtonDown(0))

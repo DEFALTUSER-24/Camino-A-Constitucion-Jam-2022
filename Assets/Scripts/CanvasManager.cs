@@ -29,6 +29,8 @@ public class CanvasManager : MonoBehaviour
     [SerializeField]            private                 GameObject              _gameOverPanel;
     [SerializeField]            private                 Text                    _candySold;
     [SerializeField]            private                 Text                    _moneyEarned;
+    [SerializeField]            private                 Text                    _IVAPaid;
+    [SerializeField]            private                 Text                    _finalAmountSold;
     [SerializeField]            private                 Text                    _madClients;
     [SerializeField]            private                 Text                    _happyClients;
     [SerializeField]            private                 Text                    _finalScore;
@@ -111,12 +113,21 @@ public class CanvasManager : MonoBehaviour
 
     public void ShowGameOverScreen()
     {
+        int money = GameMode.Instance.Stats.MoneyEarned;
+        int iva = Mathf.CeilToInt(money * 0.21f);
+        int final = money - iva;
+
+        Debug.Log("game over");
         _hudPanel.SetActive(false);
         _pausePanel.SetActive(false);
         _gameOverPanel.SetActive(true);
 
         _candySold.text = GameMode.Instance.Stats.CandyDelivered.ToString();
-        _moneyEarned.text = GameMode.Instance.Stats.MoneyEarned.ToString();
+        _moneyEarned.text = money.ToString();
+        _IVAPaid.text = iva.ToString();
+        _finalAmountSold.text = final.ToString();
+        //Las facturas declaradas ante AFIP siempre van a ser 0, es un "chiste" porque trabaja en negro.
+
         _madClients.text = GameMode.Instance.Stats.MadClients.ToString();
         _happyClients.text = GameMode.Instance.Stats.HappyClients.ToString();
         _finalScore.text = GameMode.Instance.Stats.Score.ToString();
