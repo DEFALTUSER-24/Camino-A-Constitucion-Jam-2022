@@ -96,6 +96,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f27a86e8f80a4ce4e984aee5f656fff2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _throwableSound: {fileID: 8300000, guid: c48817748e2fa4947b3001bcba24feb1, type: 3}
+  _impactSound: {fileID: 8300000, guid: 4dcba1a166b12f9459e4a8f557227ca4, type: 3}
   _player: {fileID: 0}
   _moneyToRemove: 20
   _secondsToRemove: 10
