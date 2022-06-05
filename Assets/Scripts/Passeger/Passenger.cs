@@ -9,8 +9,16 @@ public class Passenger : MonoBehaviour
 
     [SerializeField] private CandyType _iLikeThisCandy = CandyType.Nothing;
 
+    [SerializeField] private GameObject _balloon;
+    [SerializeField] private GameObject _mantekelImage;
+    [SerializeField] private GameObject _alfajorImage;
+
+    private Animator _balloonAnimator;
+
     private void Start()
     {
+        _balloonAnimator = _balloon.GetComponent<Animator>();
+
         _fsm.AddState(PassengerState.See, new SeeState(this));
         _fsm.AddState(PassengerState.IDontWantToBuy, new IDontBuyState(this));
         _fsm.AddState(PassengerState.IWantToBuy, new IBuyState(this));
@@ -26,11 +34,14 @@ public class Passenger : MonoBehaviour
     #region MouseMethods
     private void OnMouseEnter()
     {
-        CameraManager.Cam.SetCursorHoveringState(true);
+        CanvasManager.Instance.SetCursorHoveringState(true);
     }
 
     private void OnMouseOver()
     {
+        if (GameMode.Instance.GameTimer.IsZero())
+            return;
+
         if (Input.GetMouseButtonDown(0))
             CandySpawner.instance.RequestACandy(this, CandyType.Alfajor);
         else if (Input.GetMouseButtonDown(1))
@@ -39,7 +50,7 @@ public class Passenger : MonoBehaviour
 
     private void OnMouseExit()
     {
-        CameraManager.Cam.SetCursorHoveringState(false);
+        CanvasManager.Instance.SetCursorHoveringState(false);
     }
     #endregion
 
@@ -47,6 +58,13 @@ public class Passenger : MonoBehaviour
     {
         Debug.Log("Quiero un " + type);
         _iLikeThisCandy = type;
+
+        _balloonAnimator.SetTrigger("grow");
+
+        if (MyCandy() == CandyType.Mantekel)
+            _mantekelImage.SetActive(true);
+        else
+            _alfajorImage.SetActive(true);
     }
 
     public void ReciveACandy(CandyType type)
@@ -54,13 +72,20 @@ public class Passenger : MonoBehaviour
         if(_iLikeThisCandy == type)
         {
             Debug.Log("Gracias!");
-            _iLikeThisCandy = CandyType.Nothing;
         }
         else if (_iLikeThisCandy != type)
         {
             Debug.Log("No queria esto!");
-            _iLikeThisCandy = CandyType.Nothing;
         }
+
+        if (MyCandy() != CandyType.Nothing)
+        {
+            _balloonAnimator.SetTrigger("hide");
+            _mantekelImage.SetActive(false);
+            _alfajorImage.SetActive(false);
+        }
+
+        _iLikeThisCandy = CandyType.Nothing;
     }
 
     public CandyType MyCandy()

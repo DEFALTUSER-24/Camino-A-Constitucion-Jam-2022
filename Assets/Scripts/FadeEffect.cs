@@ -6,7 +6,7 @@ public class FadeEffect : MonoBehaviour
 {
     private void ResetPassengers()
     {
-        GameMode.Game.ResetPassengers();
+        GameMode.Instance.ResetPassengers();
     }
 
 }
