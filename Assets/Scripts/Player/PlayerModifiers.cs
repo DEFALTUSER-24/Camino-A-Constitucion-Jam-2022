@@ -11,6 +11,7 @@ public class PlayerModifiers : MonoBehaviour
 
     private Vector3 _initialPosition;
     private Vector3 _distanceToNextWagon;
+    private bool _alreadyReachedPosition;
 
     private void Awake()
     {
@@ -30,7 +31,7 @@ public class PlayerModifiers : MonoBehaviour
 
     private void Update()
     {
-        if (GameMode.Instance.IsGameInactive())
+        if (GameMode.Instance.IsGameInactive() || _alreadyReachedPosition)
             return;
 
         _distanceToNextWagon = _nextWagonPoint.position - transform.position;
@@ -38,12 +39,16 @@ public class PlayerModifiers : MonoBehaviour
         transform.position += _distanceToNextWagon.normalized * _speedModifier * Time.deltaTime;
 
         if (_distanceToNextWagon.magnitude < 0.5f)
-            GameMode.Instance.ResetPassengers();
+        {
+            _alreadyReachedPosition = true;
+            CanvasManager.Instance.Fade();
+        }
     }
 
 
     public void MoveToInitialPosition()
     {
         transform.position = _initialPosition;
+        _alreadyReachedPosition = false;
     }
 }

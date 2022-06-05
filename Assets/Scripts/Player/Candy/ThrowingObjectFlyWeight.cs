@@ -1,4 +1,4 @@
-public class CandyFlyweight
+public class ThrowingObjectFlyWeight
 {
     public      float       speed;
 }

@@ -12,6 +12,7 @@ public class Passenger : MonoBehaviour
     [SerializeField] private GameObject _balloon;
     [SerializeField] private GameObject _mantekelImage;
     [SerializeField] private GameObject _alfajorImage;
+    [SerializeField] private Thrower _throw;
     [SerializeField] private int _candyMaxAmount;
 
     private Animator _balloonAnimator;
@@ -21,6 +22,7 @@ public class Passenger : MonoBehaviour
     private void Start()
     {
         _balloonAnimator = _balloon.GetComponent<Animator>();
+        _throw = GetComponent<Thrower>();
 
         _fsm.AddState(PassengerState.See, new SeeState(this));
         _fsm.AddState(PassengerState.IDontWantToBuy, new IDontBuyState(this));
@@ -65,7 +67,6 @@ public class Passenger : MonoBehaviour
 
     public void RequestACandy(CandyType type)
     {
-        Debug.Log("Quiero un " + type);
         _iLikeThisCandy = type;
 
         _balloonAnimator.SetTrigger("grow");
@@ -85,19 +86,18 @@ public class Passenger : MonoBehaviour
 
         if (MyCandy() != type || CandyOnBag() >= MaxCandyAmount)
         {
-            Debug.Log(CandyOnBag() > MaxCandyAmount ? "Ya tengo suficientes!!" : "No quería esto!!");
+            _throw.Throw(PlayerHit.instance, PassengerObjects.Rocks);
 
             GameMode.Instance.Stats.MadClient_Add();
-            GameMode.Instance.Stats.Money_Remove(10);
+            //GameMode.Instance.Stats.Money_Remove(10);
             GameMode.Instance.GameTimer.ModifyTime(-15);
         }
         else if(MyCandy() == type)
         {
-            Debug.Log("Gracias!");
-
             GameMode.Instance.Stats.HappyClient_Add();
-            GameMode.Instance.Stats.Money_Add( MyCandy() == CandyType.Alfajor ? 20 : 40 );
+            GameMode.Instance.Stats.Money_Add(MyCandy() == CandyType.Alfajor ? 20 : 40);
             GameMode.Instance.GameTimer.ModifyTime(15);
+            _throw.Throw(PlayerHit.instance, PassengerObjects.Money);
         }
 
         //Cantidad de golosinas dadas siempre tiene que sumar un valor, lo haya pedido o no.

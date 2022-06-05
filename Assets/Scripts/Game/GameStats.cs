@@ -33,12 +33,14 @@ public class GameStats
     public int Money_Add(int amount)
     {
         MoneyEarned += amount;
+        CanvasManager.Instance.UpdateMoneyAmount(MoneyEarned);
         return MoneyEarned;
     }
 
     public int Money_Remove(int amount)
     {
         MoneyEarned -= amount;
+        CanvasManager.Instance.UpdateMoneyAmount(MoneyEarned);
         return MoneyEarned;
     }
 
@@ -49,6 +51,7 @@ public class GameStats
     public int MadClient_Add()
     {
         MadClients++;
+        CanvasManager.Instance.UpdateClientsAttended(HappyClients + MadClients);
         return MadClients;
     }
 
@@ -59,6 +62,7 @@ public class GameStats
     public int HappyClient_Add()
     {
         HappyClients++;
+        CanvasManager.Instance.UpdateClientsAttended(HappyClients + MadClients);
         return HappyClients;
     }
 }

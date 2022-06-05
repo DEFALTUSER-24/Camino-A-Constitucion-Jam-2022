@@ -65,6 +65,7 @@ public class Timer
     private string DisableIsBeingModified()
     {
         _bTimeIsBeingModified = false;
+        CanvasManager.Instance.UpdateTimeLeft(Get());
         return Get();
     }
 

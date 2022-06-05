@@ -101,10 +101,10 @@ public class CanvasManager : MonoBehaviour
 
     public void UpdateMoneyAmount(int amount)
     {
-        _money.text = amount.ToString();
+        _money.text = "$" + amount.ToString();
     }
 
-    public void UpdateClientsAttebded(int amount)
+    public void UpdateClientsAttended(int amount)
     {
         _clientsAttended.text = amount.ToString();
     }
