@@ -313,6 +313,7 @@ GameObject:
   - component: {fileID: 416427526181996362}
   - component: {fileID: 416427526181996365}
   - component: {fileID: 416427526181996360}
+  - component: {fileID: 8748081979585620153}
   m_Layer: 0
   m_Name: Cliente
   m_TagString: Untagged
@@ -374,9 +375,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 0.1415094, g: 0.1415094, b: 0.1415094, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -456,3 +457,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _rock: {fileID: 6069971682634885175, guid: 5bda140761b6b9848b7b80f059ac671b, type: 3}
   _money: {fileID: 1850487819216056221, guid: 46ea72ddae8021c4db452058f8f45397, type: 3}
+--- !u!114 &8748081979585620153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416427526181996367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be35dc9ee81124c448de4d36e05f99f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sr: {fileID: 0}
