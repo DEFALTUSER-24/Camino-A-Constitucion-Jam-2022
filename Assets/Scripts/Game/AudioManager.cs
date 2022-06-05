@@ -3,8 +3,15 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class AudioManager : MonoBehaviour
 {
+    public static AudioManager Instance;
+
     [SerializeField]    private     AudioClip[]     _music;
                         private     AudioSource     _src;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     void Start()
     {

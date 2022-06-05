@@ -12,6 +12,11 @@ public class SkinCall : MonoBehaviour
 
     private void Start()
     {
-        _sr.sprite = PassagersSkinsManager.instance.GetMyASkin();
+        ChangeSkin(PassagersSkinsManager.instance.GetMyASkin());
+    }
+
+    public void ChangeSkin(Sprite skin)
+    {
+        _sr.sprite = skin;
     }
 }

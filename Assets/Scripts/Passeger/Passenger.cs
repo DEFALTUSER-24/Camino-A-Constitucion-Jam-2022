@@ -25,6 +25,7 @@ public class Passenger : MonoBehaviour
                         private         Animator        _animator;
                         private         Animator        _balloonAnimator;
                         private         Coroutine       _candyTimeoutCoroutine;
+                        private         SkinCall        _skin;
                         public          int             MaxCandyAmount { get { return _candyMaxAmount; } private set { _candyMaxAmount = value; } }
                         private         int             _candyAmountOnBag;
 
@@ -35,6 +36,7 @@ public class Passenger : MonoBehaviour
         _animator = GetComponent<Animator>();
         _balloonAnimator = _balloon.GetComponent<Animator>();
         _throw = GetComponent<Thrower>();
+        _skin = GetComponent<SkinCall>();
 
         _fsm.AddState(PassengerState.See, new SeeState(this));
         _fsm.AddState(PassengerState.IDontWantToBuy, new IDontBuyState(this));
@@ -155,6 +157,8 @@ public class Passenger : MonoBehaviour
             HideCandyBalloons();
             _iLikeThisCandy = CandyType.Nothing;
         }
+
+        _skin.ChangeSkin(PassagersSkinsManager.instance.GetMyASkin());
     }
 
     private void HideCandyBalloons()
