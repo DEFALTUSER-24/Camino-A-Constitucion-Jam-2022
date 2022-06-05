@@ -7,6 +7,7 @@ public class Rock : ThrowingObject
 
     protected override void Collision()
     {
+        _player.GotHit();
         GameMode.Instance.Stats.Money_Remove(_moneyToRemove);
         GameMode.Instance.GameTimer.ModifyTime(-_secondsToRemove);
         base.Collision();

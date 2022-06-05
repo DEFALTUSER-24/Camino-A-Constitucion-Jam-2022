@@ -3,8 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(TrailRenderer))]
 public abstract class ThrowingObject : MonoBehaviour
 {
-    [SerializeField]    private         PlayerHit       _player;
-                        private         Vector3         _distance;
+    [SerializeField]    protected           PlayerHit       _player;
+                        private             Vector3         _distance;
 
     private void Update()
     {
@@ -25,7 +25,6 @@ public abstract class ThrowingObject : MonoBehaviour
 
     protected virtual void Collision()
     {
-        _player.GotHit();
         _player = null;
         Destroy(this.gameObject);
     }
