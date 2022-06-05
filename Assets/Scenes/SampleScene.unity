@@ -212,6 +212,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 416427526181996365, guid: 6d87ce9741c2b6c4dafcd25c4b94a2bc, type: 3}
+      propertyPath: _maxTimeoutValue
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 416427526181996365, guid: 6d87ce9741c2b6c4dafcd25c4b94a2bc, type: 3}
+      propertyPath: _minTimeoutValue
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 416427526181996367, guid: 6d87ce9741c2b6c4dafcd25c4b94a2bc, type: 3}
       propertyPath: m_Name
       value: Cliente (2)
@@ -641,6 +649,14 @@ PrefabInstance:
       propertyPath: bAnimateToLeft
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 416427526181996365, guid: 6d87ce9741c2b6c4dafcd25c4b94a2bc, type: 3}
+      propertyPath: _maxTimeoutValue
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 416427526181996365, guid: 6d87ce9741c2b6c4dafcd25c4b94a2bc, type: 3}
+      propertyPath: _minTimeoutValue
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 416427526181996367, guid: 6d87ce9741c2b6c4dafcd25c4b94a2bc, type: 3}
       propertyPath: m_Name
       value: Cliente (7)
@@ -711,6 +727,14 @@ PrefabInstance:
       propertyPath: bAnimateToLeft
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 416427526181996365, guid: 6d87ce9741c2b6c4dafcd25c4b94a2bc, type: 3}
+      propertyPath: _maxTimeoutValue
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 416427526181996365, guid: 6d87ce9741c2b6c4dafcd25c4b94a2bc, type: 3}
+      propertyPath: _minTimeoutValue
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 416427526181996367, guid: 6d87ce9741c2b6c4dafcd25c4b94a2bc, type: 3}
       propertyPath: m_Name
       value: Cliente (4)
@@ -776,6 +800,14 @@ PrefabInstance:
     - target: {fileID: 416427526181996364, guid: 6d87ce9741c2b6c4dafcd25c4b94a2bc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 416427526181996365, guid: 6d87ce9741c2b6c4dafcd25c4b94a2bc, type: 3}
+      propertyPath: _maxTimeoutValue
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 416427526181996365, guid: 6d87ce9741c2b6c4dafcd25c4b94a2bc, type: 3}
+      propertyPath: _minTimeoutValue
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 416427526181996367, guid: 6d87ce9741c2b6c4dafcd25c4b94a2bc, type: 3}
       propertyPath: m_Name
@@ -963,6 +995,14 @@ PrefabInstance:
       propertyPath: bAnimateToLeft
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 416427526181996365, guid: 6d87ce9741c2b6c4dafcd25c4b94a2bc, type: 3}
+      propertyPath: _maxTimeoutValue
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 416427526181996365, guid: 6d87ce9741c2b6c4dafcd25c4b94a2bc, type: 3}
+      propertyPath: _minTimeoutValue
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 416427526181996367, guid: 6d87ce9741c2b6c4dafcd25c4b94a2bc, type: 3}
       propertyPath: m_Name
       value: Cliente (6)
@@ -1146,6 +1186,14 @@ PrefabInstance:
     - target: {fileID: 416427526181996364, guid: 6d87ce9741c2b6c4dafcd25c4b94a2bc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 416427526181996365, guid: 6d87ce9741c2b6c4dafcd25c4b94a2bc, type: 3}
+      propertyPath: _maxTimeoutValue
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 416427526181996365, guid: 6d87ce9741c2b6c4dafcd25c4b94a2bc, type: 3}
+      propertyPath: _minTimeoutValue
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 416427526181996367, guid: 6d87ce9741c2b6c4dafcd25c4b94a2bc, type: 3}
       propertyPath: m_Name
@@ -1506,6 +1554,14 @@ PrefabInstance:
       propertyPath: bAnimateToLeft
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 416427526181996365, guid: 6d87ce9741c2b6c4dafcd25c4b94a2bc, type: 3}
+      propertyPath: _maxTimeoutValue
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 416427526181996365, guid: 6d87ce9741c2b6c4dafcd25c4b94a2bc, type: 3}
+      propertyPath: _minTimeoutValue
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 416427526181996367, guid: 6d87ce9741c2b6c4dafcd25c4b94a2bc, type: 3}
       propertyPath: m_Name
       value: Cliente (5)
@@ -1653,6 +1709,14 @@ PrefabInstance:
     - target: {fileID: 416427526181996364, guid: 6d87ce9741c2b6c4dafcd25c4b94a2bc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 416427526181996365, guid: 6d87ce9741c2b6c4dafcd25c4b94a2bc, type: 3}
+      propertyPath: _maxTimeoutValue
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 416427526181996365, guid: 6d87ce9741c2b6c4dafcd25c4b94a2bc, type: 3}
+      propertyPath: _minTimeoutValue
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 416427526181996367, guid: 6d87ce9741c2b6c4dafcd25c4b94a2bc, type: 3}
       propertyPath: m_Name

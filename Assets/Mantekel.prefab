@@ -205,3 +205,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 0}
   _myType: 1
+  _value: 40

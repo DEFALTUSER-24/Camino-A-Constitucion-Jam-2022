@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class Timer
 {
     public int Minutes { get; private set; }
@@ -35,27 +37,19 @@ public class Timer
         _bTimeIsBeingModified = true;
         Seconds += amountInSeconds;
 
-        if (amountInSeconds > 0 && Seconds < 60)
-            return DisableIsBeingModified();
-
-        if (amountInSeconds < 0 && Seconds > 0)
-            return DisableIsBeingModified();
-
-        if (Seconds <= 0 && Minutes <= 0)
+        if (amountInSeconds > 0)
         {
-            Seconds = 0;
-            Minutes = 0;
-            return Get();
-        }
+            if (Seconds < 60)
+                return DisableIsBeingModified();
 
-        //Sumó de mas
-        if (Seconds > 60)
-        {
             Minutes++;
             Seconds -= 60;
         }
-        else //Restó de mas (los segundos estan por debajo de cero)
+        else
         {
+            if (Seconds > 0)
+                return DisableIsBeingModified();
+
             Minutes--;
             Seconds = 60 - Seconds * -1;
         }

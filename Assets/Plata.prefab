@@ -96,6 +96,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b85587452c333ca4f9ed7ab99809da42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _player: {fileID: 0}
+  _moneyToAdd: 40
+  _secondsToAdd: 0
 --- !u!96 &6243743606987331601
 TrailRenderer:
   serializedVersion: 2

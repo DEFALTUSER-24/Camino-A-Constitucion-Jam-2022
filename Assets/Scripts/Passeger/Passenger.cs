@@ -2,28 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(CircleCollider2D))]
+[RequireComponent(typeof(CircleCollider2D), typeof(Animator))]
 public class Passenger : MonoBehaviour
 {
     public FiniteStateMachine<PassengerState> _fsm = new FiniteStateMachine<PassengerState>();
 
-    [SerializeField] private CandyType _iLikeThisCandy = CandyType.Nothing;
+    [SerializeField]    private         CandyType       _iLikeThisCandy = CandyType.Nothing;
 
-    [SerializeField] private GameObject _mantekelImage;
-    [SerializeField] private GameObject _alfajorImage;
-    [SerializeField] private Thrower _throw;
-    [SerializeField] private int _candyMaxAmount;
+    [SerializeField]    private         GameObject      _mantekelImage;
+    [SerializeField]    private         GameObject      _alfajorImage;
+    [SerializeField]    private         Thrower         _throw;
+    [SerializeField]    private         int             _candyMaxAmount;
 
     [Header("Balloon options")]
-    [SerializeField] private GameObject _balloon;
-    [SerializeField] private bool bAnimateToLeft;
+    [SerializeField]    private         GameObject      _balloon;
+    [SerializeField]    private         bool            bAnimateToLeft;
 
-    private Animator _balloonAnimator;
-    public int MaxCandyAmount { get { return _candyMaxAmount; } private set { _candyMaxAmount = value; } }
-    private int _candyAmountOnBag;
+    [Header("Candy timeout options")]
+    [SerializeField]    private         int             _minTimeoutValue = 3;
+    [SerializeField]    private         int             _maxTimeoutValue = 10;
+
+                        private         Animator        _animator;
+                        private         Animator        _balloonAnimator;
+                        private         Coroutine       _candyTimeoutCoroutine;
+                        public          int             MaxCandyAmount { get { return _candyMaxAmount; } private set { _candyMaxAmount = value; } }
+                        private         int             _candyAmountOnBag;
+
+    //--------------------------------------------------------------------------------
 
     private void Start()
     {
+        _animator = GetComponent<Animator>();
         _balloonAnimator = _balloon.GetComponent<Animator>();
         _throw = GetComponent<Thrower>();
 
@@ -41,6 +50,8 @@ public class Passenger : MonoBehaviour
 
         _fsm.CurrentState().OnUpdate();
     }
+
+    //--------------------------------------------------------------------------------
 
     #region MouseMethods
     private void OnMouseEnter()
@@ -68,6 +79,8 @@ public class Passenger : MonoBehaviour
     }
     #endregion
 
+    //--------------------------------------------------------------------------------
+
     public void RequestACandy(CandyType type)
     {
         _iLikeThisCandy = type;
@@ -78,29 +91,26 @@ public class Passenger : MonoBehaviour
             _mantekelImage.SetActive(true);
         else
             _alfajorImage.SetActive(true);
+
+        if (_candyTimeoutCoroutine != null)
+            StopCoroutine(_candyTimeoutCoroutine);
+
+        _candyTimeoutCoroutine = StartCoroutine(CandyTimeout());
     }
 
-    public void ReciveACandy(CandyType type)
+    public void ReciveACandy(CandyType type, int value)
     {
-        /*
-         * Los valores de las golosinas estan hardcodeados, hay que ponerles un valor después (estaría bueno determinarlo por dificultad o por inflación?).
-         * Lo mismo con el tiempo que resta/suma.
-         */
-
         if (MyCandy() != type || CandyOnBag() >= MaxCandyAmount)
         {
             _throw.Throw(PlayerHit.instance, PassengerObjects.Rocks);
-
             GameMode.Instance.Stats.MadClient_Add();
-            //GameMode.Instance.Stats.Money_Remove(10);
-            GameMode.Instance.GameTimer.ModifyTime(-15);
+            _animator.SetTrigger("gotMad");
         }
         else if(MyCandy() == type)
         {
-            GameMode.Instance.Stats.HappyClient_Add();
-            GameMode.Instance.Stats.Money_Add(MyCandy() == CandyType.Alfajor ? 20 : 40);
-            //GameMode.Instance.GameTimer.ModifyTime(15);
             _throw.Throw(PlayerHit.instance, PassengerObjects.Money);
+            GameMode.Instance.Stats.HappyClient_Add();
+            GameMode.Instance.Stats.Money_Add(value);
         }
 
         //Cantidad de golosinas dadas siempre tiene que sumar un valor, lo haya pedido o no.
@@ -108,14 +118,24 @@ public class Passenger : MonoBehaviour
         GameMode.Instance.Stats.Candy_Add();
 
         if (MyCandy() != CandyType.Nothing)
-        {
-            _balloonAnimator.SetTrigger("hide");
-            _mantekelImage.SetActive(false);
-            _alfajorImage.SetActive(false);
-        }
+            HideCandyBalloons();
+
+        if (_candyTimeoutCoroutine != null)
+            StopCoroutine(_candyTimeoutCoroutine);
 
         _iLikeThisCandy = CandyType.Nothing;
     }
+
+    IEnumerator CandyTimeout()
+    {
+        yield return new WaitForSeconds(Random.Range(_minTimeoutValue, _maxTimeoutValue));
+        GameMode.Instance.Stats.MadClient_Add();
+        _iLikeThisCandy = CandyType.Nothing;
+        HideCandyBalloons();
+        _animator.SetTrigger("gotMad");
+    }
+
+    //--------------------------------------------------------------------------------
 
     public CandyType MyCandy()
     {
@@ -130,7 +150,21 @@ public class Passenger : MonoBehaviour
     public void ResetCandyOnBag()
     {
         _candyAmountOnBag = 0;
+        if (MyCandy() != CandyType.Nothing)
+        {
+            HideCandyBalloons();
+            _iLikeThisCandy = CandyType.Nothing;
+        }
     }
+
+    private void HideCandyBalloons()
+    {
+        _balloonAnimator.SetTrigger("hide");
+        _mantekelImage.SetActive(false);
+        _alfajorImage.SetActive(false);
+    }
+
+    //--------------------------------------------------------------------------------
 
     private void OnDrawGizmos()
     {

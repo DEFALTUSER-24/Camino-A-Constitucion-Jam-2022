@@ -97,6 +97,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
+  _moneyToRemove: 20
+  _secondsToRemove: 10
 --- !u!96 &6069971682634885174
 TrailRenderer:
   serializedVersion: 2

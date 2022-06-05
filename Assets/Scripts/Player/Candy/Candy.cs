@@ -5,6 +5,7 @@ public class Candy : MonoBehaviour
 {
     [SerializeField] private        Passenger           _target;
     [SerializeField] private        CandyType           _myType;
+    [SerializeField] private        int                 _value;
 
     private void Update()
     {
@@ -14,7 +15,7 @@ public class Candy : MonoBehaviour
 
         if(distance.magnitude < FlyWeightPointer.passenger.viewRadius)
         {
-            _target.ReciveACandy(_myType);
+            _target.ReciveACandy(_myType, _value);
             Destroy(this.gameObject);
         }
     }

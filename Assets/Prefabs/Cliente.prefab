@@ -309,6 +309,7 @@ GameObject:
   m_Component:
   - component: {fileID: 416427526181996364}
   - component: {fileID: 416427526181996363}
+  - component: {fileID: 4098394942972304670}
   - component: {fileID: 416427526181996362}
   - component: {fileID: 416427526181996365}
   - component: {fileID: 416427526181996360}
@@ -375,7 +376,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
-  m_Color: {r: 0.14150941, g: 0.14150941, b: 0.14150941, a: 1}
+  m_Color: {r: 0.1415094, g: 0.1415094, b: 0.1415094, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -385,6 +386,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &4098394942972304670
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 416427526181996367}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bfb1cfb02fe82c94abc9dd6f2920bd5b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!58 &416427526181996362
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -414,11 +434,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _iLikeThisCandy: 2
-  _balloon: {fileID: 416427524994449590}
   _mantekelImage: {fileID: 416427525700027456}
   _alfajorImage: {fileID: 416427525243432217}
   _throw: {fileID: 0}
   _candyMaxAmount: 5
+  _balloon: {fileID: 416427524994449590}
+  bAnimateToLeft: 0
+  _minTimeoutValue: 3
+  _maxTimeoutValue: 10
 --- !u!114 &416427526181996360
 MonoBehaviour:
   m_ObjectHideFlags: 0
