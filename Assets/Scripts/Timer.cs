@@ -47,6 +47,14 @@ public class Timer
         }
         else
         {
+            if (Minutes <= 0 && Seconds <= 0)
+            {
+                Seconds = 0;
+                Minutes = 0;
+                GameMode.Instance.GameOver();
+                return DisableIsBeingModified();
+            }
+
             if (Seconds > 0)
                 return DisableIsBeingModified();
 
