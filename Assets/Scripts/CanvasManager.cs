@@ -37,7 +37,7 @@ public class CanvasManager : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(this);
+        //DontDestroyOnLoad(this);
 
         if (Instance != null)
             Destroy(Instance);
