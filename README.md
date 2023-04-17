@@ -15,10 +15,21 @@ Podés clonar el repositorio y ejecutar el contenido "Build Jam", abrirlo desde 
 
 Usamos los siguientes assets de terceros:
 
-https://www.youtube.com/watch?v=t0XFFeRhUH8
+[Como Te Voy a Olvidar - Los Ángeles Azules (Cumbia en 8bits) - Cumbia Boy](https://www.youtube.com/watch?v=t0XFFeRhUH8)
 
-https://www.youtube.com/watch?v=y8YHrwT-jCo
+[Cumbia de los pajaritos - 8-Bit](https://www.youtube.com/watch?v=y8YHrwT-jCo)
 
-https://www.youtube.com/watch?v=A3WkoTf_hdA
+[La negra tomasa 8-bit](https://www.youtube.com/watch?v=A3WkoTf_hdA)
 
-https://assetstore.unity.com/packages/2d/gui/icons/clean-vector-icons-132084
+[Clean Vector Icons - PONETI](https://assetstore.unity.com/packages/2d/gui/icons/clean-vector-icons-132084)
+
+## Creadores
+
+Ignacio Settembrini:
+[Twitter - @ISettembrini](https://twitter.com/ISettembrini)
+[Linkedin](https://www.linkedin.com/in/ignacio-x-settembrini-5a2688153/)
+
+Ezequiel Castro:
+[Twitter - @EzeCastro38](https://twitter.com/EzeCastro38)
+[Linkedin](https://www.linkedin.com/in/ezequiel-m-castro)
+[Portfolio](https://www.behance.net/EzequielCastro)
