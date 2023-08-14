@@ -9,7 +9,7 @@ Usa click izquierdo y click derecho para disparar los dos tipos de golosinas dif
 
 ## ¿Cómo jugar?
 
-Podés clonar el repositorio y ejecutar el contenido "Build Jam", abrirlo desde Unity 2020.3.25f1, jugarlo en [itch.io](https://ignaxavier.itch.io/camino-a-constitucin) o incluso descargar la Release de este repositorio.
+Podés clonar el repositorio y abrirlo desde Unity 2020.3.25f1, jugarlo en [itch.io](https://ignaxavier.itch.io/camino-a-constitucin) o descargar la Release de este repositorio.
 
 ## Assets
 
