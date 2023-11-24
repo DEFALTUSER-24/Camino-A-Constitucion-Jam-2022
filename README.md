@@ -27,4 +27,4 @@ Usamos los siguientes assets de terceros:
 
 Ignacio Settembrini: [Twitter - @ISettembrini](https://twitter.com/ISettembrini) | [Linkedin](https://www.linkedin.com/in/ignacio-x-settembrini-5a2688153/)
 
-Ezequiel Castro: [Twitter - @EzeCastro38](https://twitter.com/EzeCastro38) | [Linkedin](https://www.linkedin.com/in/ezequiel-m-castro) | [Portfolio](https://www.behance.net/EzequielCastro)
+Ezequiel Castro: [Linkedin](https://www.linkedin.com/in/ezequiel-m-castro) | [Portfolio](https://www.behance.net/EzequielCastro)
